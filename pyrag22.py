@@ -23,7 +23,7 @@ def load_or_create_vectorstore():
     print("[!] No Chroma DB found — building from scratch...")
 
     start = time.time()
-    loader = DirectoryLoader(r'C:\PrivateLLM\PythonInfo', glob="*.pdf", loader_cls=PyPDFLoader)
+    loader = DirectoryLoader(r'YOUR FILE LOCATION HERE', glob="*.pdf", loader_cls=PyPDFLoader)
     docs = loader.load()
     print(f"[✓] Loaded {len(docs)} documents in {time.time() - start:.2f} seconds")
 
@@ -58,7 +58,7 @@ def rag_query(query: str, k: int = 3):
     print("[Query] Generating response with Qwen2.5 via Ollama...")
     start = time.time()
     response = ollama.generate(
-        model="qwen2.5:0.5b",
+        model="YOUR MODEL HERE",
         prompt=f"Using this data:\n{context}\n\nAnswer the following question:\n{query}"
     )
     print(f"[Query] Ollama generate took {time.time() - start:.2f} seconds")
